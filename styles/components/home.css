@@ -109,6 +109,7 @@ header p {
     margin-right: 8px;
     font-size: 18px;
     font-weight: 600;
+    color: var(--gray-color-1);
 }
 
 /* Tarefas */
