@@ -30,7 +30,7 @@ formTarefa.addEventListener ("submit", function (add) {
     add.preventDefault();
 
     const nome = document.getElementById ("nome-tarefa").value;
-    const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+    const meses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "stembro", "outubro", "novembro", "dezembro"];
     const data = `${agora.getDate()} de ${meses[agora.getMonth()]} de ${agora.getFullYear()}`;
 
     const tarefa = {
@@ -88,7 +88,7 @@ function atualizarContador() {
     const contador = document.getElementById ("contador");
 
     if (contador) {
-        contador.innerHTML = `<h4>${concluidas} de ${listaTarefas.length} <strong> concluídas </strong></h4>`;
+        contador.innerHTML = `<h4> ${concluidas} de ${listaTarefas.length} concluídas </h4>`;
     }
 }
 
@@ -109,18 +109,16 @@ function atualizarEventos() {
             tarefaCaixa.style.backgroundColor = "#92cda9ff";
             tarefaCaixa.style.border = "1px solid #018f60ff";
             titulo.style.color = "#008f5fff";
-            texto.textContent = `Concluída em: ${listaTarefas[i].data}`;
 
-            contador.style.color = "#02c785ff";
+            texto.textContent = `Concluída em: ${listaTarefas[i].data}`;
         }
         
         else {
             tarefaCaixa.style.backgroundColor = "";
             tarefaCaixa.style.border = "";
             titulo.style.color = "";
-            texto.textContent = `Criada em: ${listaTarefas[i].data}`;
 
-            contador.style.color = "";
+            texto.textContent = `Criada em: ${listaTarefas[i].data}`;
         }
         
         atualizarContador();

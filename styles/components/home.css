@@ -3,7 +3,6 @@ body {
     background-color: var(--background);
 }
 
-/* Área principal */
 main {
     display: flex;
     flex-direction: column;
@@ -13,7 +12,6 @@ main {
     max-width: 965px;
 }
 
-/* Cabeçalho */
 header {
     display: flex;
     justify-content: space-around;
@@ -36,7 +34,7 @@ header p {
     color: var(--gray-color-1);
 }
 
-/* Barra para adicionar tarefa */
+/* Adicionar tarefa */
 .barra-tarefas {
     border-bottom: 2px solid var(--primary-color-light);
     display: flex;
@@ -112,7 +110,7 @@ header p {
     color: var(--gray-color-1);
 }
 
-/* Tarefas */
+/* Estado preenchido */
 .caixa-tarefa {
     background-color: var(--primary-color-super-light);
     border: 2px solid var(--primary-color);
