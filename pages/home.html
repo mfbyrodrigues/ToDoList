@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ToDoList </title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="/images/RarityFilly.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <h2> ToDoList </h2>
+        <p id="saudacao"> </p>
+    </header>
+
+    <main>
+        <section class="barra-tarefas">
+            <div class="adicionar-tarefa">
+                <h3> Adicionar tarefa </h3>
+                <form id="form-tarefa" class="form-tarefa">
+                <input type="text" id="nome-tarefa" placeholder="Nome da tarefa" required>
+                <button type="submit"> Adicionar </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="area-contador" class="area-contador">
+            <div class="titulo-lista">
+                <h3> Minhas tarefas </h3>
+                <p> Veja todas as suas tarefas adicionadas abaixo. </p>
+            </div>
+            <h4 id="contador" class="contador"></h4>
+        </section>
+
+        <section id="caixa-principal">
+            <div id="lista-vazia" class="lista-vazia">
+                <span id="emoji-vazio" class="emoji-vazio"> 😔 </span>
+                <p class="texto-vazio"><strong> Nenhum registro encontrado! </strong></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="/scripts/home.js"></script>
+</body>
+</html>

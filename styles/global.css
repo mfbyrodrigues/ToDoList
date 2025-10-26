@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #7063F0;
+    --primary-color-light: #D7D3FF;
+    --primary-color-super-light: #E7E5FF;
+    --gray-color-1: #2D2D2D;
+    --gray-color-2: #555555;
+    --background: #F3F2FF;
+}

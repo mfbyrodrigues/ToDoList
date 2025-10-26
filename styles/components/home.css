@@ -1,0 +1,201 @@
+body {
+    max-width: 1920px;
+    background-color: var(--background);
+}
+
+/* Área principal */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    padding: 30px 0 50px;
+    max-width: 965px;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    padding: 1rem;
+    background-color: var(--background);
+    border-bottom: 2px solid var(--primary-color-light);
+}
+
+header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+header p {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--gray-color-1);
+}
+
+/* Barra para adicionar tarefa */
+.barra-tarefas {
+    border-bottom: 2px solid var(--primary-color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 965px;
+    margin: auto;
+    padding: 30px 0 50px;
+    margin-bottom: 1rem;
+}
+
+.adicionar-tarefa h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--gray-color-1);
+}
+
+.form-tarefa input {
+    background-color: var(--primary-color-super-light);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 400;
+    height: 60px;
+    width: 762px;
+    margin-right: 1rem;
+    text-indent: 18px;
+}
+
+.form-tarefa input::placeholder {
+    color: var(--primary-color);
+}
+
+.form-tarefa button {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    height: 60px;
+    width: 130px;
+}
+
+/* Contador */
+.area-contador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-left: 5px;
+}
+
+.area-contador h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--gray-color-1);
+}
+
+.area-contador p {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--gray-color-2);
+}
+
+.contador {
+    margin-right: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Tarefas */
+.caixa-tarefa {
+    background-color: var(--primary-color-super-light);
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    padding: 18px;
+    width: 910px;
+}
+
+.caixa-tarefa i {
+    cursor: pointer;
+}
+
+.conteudo-tarefa {
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    background-color: #FFFFFF;
+    border: 3px solid var(--primary-color);
+    border-radius: 5px;
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+    position: relative;
+    appearance: none;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #02AF75;
+    border-color: #00895c;
+}
+
+input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    border: solid #FFFFFF;
+    border-width: 0 2px 2px 0;
+    width: 6px;
+    height: 12px;
+    left: 6px;
+    top: 0px;
+    transform: rotate(45deg);
+}
+
+/* Texto da tarefa */
+.texto-tarefa {
+    margin-left: 20px;
+}
+
+.texto-tarefa h4 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.texto-tarefa p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--gray-color-2);
+}
+
+/* Estado vazio */
+.lista-vazia {
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 965px;
+    padding: 20px;
+}
+
+.lista-vazia strong {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gray-color-1);
+}
+
+.emoji-vazio {
+    width: 50px;
+    font-size: 30px;
+    display: inline-block;
+}
