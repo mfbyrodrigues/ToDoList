@@ -6,14 +6,17 @@ window.onload = function () {
     const saudacao = document.getElementById ("saudacao");
 
     if (hora >= 0 && hora < 12) {
+
         saudacao.innerHTML = "<p> Bom dia, <strong> Maria Fernanda! </strong> ☀️ </p>";
     }
     
     else if (hora < 18) {
+
         saudacao.innerHTML = "<p> Boa tarde, <strong> Maria Fernanda! </strong> 🌤️ </p>";
     }
     
     else {
+
         saudacao.innerHTML = "<p> Boa noite, <strong> Maria Fernanda! </strong> 🌙 </p>";
     }
 };
@@ -30,7 +33,10 @@ formTarefa.addEventListener ("submit", function (add) {
     add.preventDefault();
 
     const nome = document.getElementById ("nome-tarefa").value;
-    const meses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "stembro", "outubro", "novembro", "dezembro"];
+    const meses = [
+    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+    ];
     const data = `${agora.getDate()} de ${meses[agora.getMonth()]} de ${agora.getFullYear()}`;
 
     const tarefa = {
@@ -42,6 +48,7 @@ formTarefa.addEventListener ("submit", function (add) {
     listaTarefas.push(tarefa);
 
     if (listaVazia) {
+
         listaVazia.remove();
     }
 
@@ -88,6 +95,7 @@ function atualizarContador() {
     const contador = document.getElementById ("contador");
 
     if (contador) {
+
         contador.innerHTML = `<h4> ${concluidas} de ${listaTarefas.length} concluídas </h4>`;
     }
 }
@@ -106,6 +114,7 @@ function atualizarEventos() {
         const texto = tarefaCaixa.querySelector("p");
 
         if (this.checked) {
+
             tarefaCaixa.style.backgroundColor = "#92cda9ff";
             tarefaCaixa.style.border = "1px solid #018f60ff";
             titulo.style.color = "#008f5fff";
@@ -114,6 +123,7 @@ function atualizarEventos() {
         }
         
         else {
+            
             tarefaCaixa.style.backgroundColor = "";
             tarefaCaixa.style.border = "";
             titulo.style.color = "";
