@@ -15,17 +15,14 @@ window.onload = function () {
     const saudacao = document.getElementById ("saudacao");
 
     if (hora >= 0 && hora < 12) {
-
         saudacao.innerHTML = "<p> Bom dia, <strong> Maria Fernanda! </strong> ☀️ </p>";
     }
     
     else if (hora < 18) {
-
         saudacao.innerHTML = "<p> Boa tarde, <strong> Maria Fernanda! </strong> 🌤️ </p>";
     }
     
     else {
-
         saudacao.innerHTML = "<p> Boa noite, <strong> Maria Fernanda! </strong> 🌙 </p>";
     }
 
