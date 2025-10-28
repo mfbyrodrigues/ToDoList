@@ -56,7 +56,7 @@ formTarefa.addEventListener ("submit", function (add) {
     "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
     ];
 
-    // Data completa que foi formada
+    // Data formada
     const data = `${agora.getDate()} de ${meses[agora.getMonth()]} de ${agora.getFullYear()}`;
 
     // Objeto tarefa com seus principais dados
@@ -217,3 +217,4 @@ function atualizarTarefas() {
 function atualizarStorage() {
     localStorage.setItem ("tarefas", JSON.stringify (listaTarefas));
 }
+
