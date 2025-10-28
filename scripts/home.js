@@ -1,7 +1,16 @@
+// Criação de um objeto para instanciar de acordo com os horários de acesso do usuário
 const agora = new Date();
+
+// Minhas variáveis príncipais, juntamente com um array 
+const formTarefa = document.getElementById ("form-tarefa");
+let caixasMarcadas = document.getElementsByClassName ("marcador");
+let listaVazia = document.getElementById ("lista-vazia");
+const listaTarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+const copiaListaVazia = listaVazia;
 
 window.onload = function () {
 
+    // Captura a hora atual e define a saudação personalizada
     const hora = agora.getHours();
     const saudacao = document.getElementById ("saudacao");
 
@@ -19,40 +28,64 @@ window.onload = function () {
 
         saudacao.innerHTML = "<p> Boa noite, <strong> Maria Fernanda! </strong> 🌙 </p>";
     }
+
+    // Recria as tarefas salvas no LocalStorage ao carregar a página
+    for (let i = 0; i < listaTarefas.length; i++) {
+        adicionarTarefa(listaTarefas[i])
+    }
+
+    atualizarStorage();
+
+    // Remove o aviso de quando não tem nenhuma tarefa
+    if (listaTarefas.length != 0) {
+        if (listaVazia) {
+            listaVazia.remove();
+        }
+    }
 };
 
-const formTarefa = document.getElementById ("form-tarefa");
-let caixasMarcadas = document.getElementsByClassName ("marcador");
-const listaTarefas = [];
-
-let listaVazia = document.getElementById ("lista-vazia");
-const copiaListaVazia = listaVazia;
-
+// Envio do formulário
 formTarefa.addEventListener ("submit", function (add) {
 
+    // Evita que o formulário recarregue a página
     add.preventDefault();
 
+    // Nome da tarefa que foi digitada pelo usuário
     const nome = document.getElementById ("nome-tarefa").value;
+
+    // Array com os meses do ano, apenas para deixar a data mais bonitinha :)
     const meses = [
     "janeiro", "fevereiro", "março", "abril", "maio", "junho",
     "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
     ];
+
+    // Data completa que foi formada
     const data = `${agora.getDate()} de ${meses[agora.getMonth()]} de ${agora.getFullYear()}`;
 
+    // Objeto tarefa com seus principais dados
     const tarefa = {
         nome,
         data,
         feita: false,
     };
 
+    // Adiciona nova tarefa à lista
     listaTarefas.push(tarefa);
 
-    if (listaVazia) {
-
-        listaVazia.remove();
+    // Remove o aviso de quando não tem nenhuma tarefa
+    if (listaTarefas.length != 0) {
+        if (listaVazia) {
+            listaVazia.remove();
+        }
     }
 
     atualizarContador();
+    adicionarTarefa(tarefa);
+    atualizarStorage();
+});
+
+// Adiciona a tarefa na tela
+function adicionarTarefa (tarefa) {
 
     const caixaPrincipal = document.getElementById ("caixa-principal");
     const novaCaixa = document.createElement ("div");
@@ -78,6 +111,7 @@ formTarefa.addEventListener ("submit", function (add) {
     texto.append (titulo, descricao);
     conteudo.append (marcador, texto);
 
+    // Estiliza a lixeirinha
     const lixeira = document.createElement ("i");
     lixeira.className = "fa-solid fa-trash fa-lg";
     lixeira.style.color = "#de015d";
@@ -85,22 +119,35 @@ formTarefa.addEventListener ("submit", function (add) {
     novaCaixa.append (conteudo, lixeira);
     caixaPrincipal.append (novaCaixa);
 
-    atualizarEventos();
-    formTarefa.reset();
-});
+    
+    // Se a tarefa estava concluída, aplica o estilo verde
+    if (tarefa.feita) {
+        novaCaixa.style.backgroundColor = "#92cda9ff";
+        novaCaixa.style.border = "1px solid #018f60ff";
+        titulo.style.color = "#008f5fff";
+    }
+    
+    // Deixa a tarefa marcada como concluída salva
+    marcador.checked = tarefa.feita;
 
+    atualizarTarefas();
+    formTarefa.reset();
+}
+
+// Conta quantas tarefas estão concluídas e atualiza o contador na tela
 function atualizarContador() {
 
-    const concluidas = listaTarefas.filter (t => t.feita).length;
+    const concluidas = listaTarefas.filter (i => i.feita).length;
     const contador = document.getElementById ("contador");
 
     if (contador) {
 
         contador.innerHTML = `<h4> ${concluidas} de ${listaTarefas.length} concluídas </h4>`;
+        contador.innerHTML = `<h4>${concluidas} de ${listaTarefas.length} <span style="color: #008f5f;"> concluídas </span></h4>`;
     }
 }
 
-function atualizarEventos() {
+function atualizarTarefas() {
 
     caixasMarcadas = document.getElementsByClassName ("marcador");
 
@@ -108,11 +155,14 @@ function atualizarEventos() {
 
         caixasMarcadas[i].onchange = function () {
 
+        // Tarefa feita ou não
         listaTarefas[i].feita = this.checked;
+
         const tarefaCaixa = this.closest(".caixa-tarefa");
         const titulo = tarefaCaixa.querySelector("h4");
         const texto = tarefaCaixa.querySelector("p");
-
+        
+        // Altera o estilo da tarefa quando marcada como concluída
         if (this.checked) {
 
             tarefaCaixa.style.backgroundColor = "#92cda9ff";
@@ -120,6 +170,8 @@ function atualizarEventos() {
             titulo.style.color = "#008f5fff";
 
             texto.textContent = `Concluída em: ${listaTarefas[i].data}`;
+
+            atualizarStorage();
         }
         
         else {
@@ -129,11 +181,13 @@ function atualizarEventos() {
             titulo.style.color = "";
 
             texto.textContent = `Criada em: ${listaTarefas[i].data}`;
+
+            atualizarStorage();
         }
         
         atualizarContador();
         };
-  }
+    }
 
   const lixeiras = document.querySelectorAll (".fa-trash");
 
@@ -141,12 +195,14 @@ function atualizarEventos() {
 
         lixeira.onclick = function () {
 
+        // Remove a tarefa
         const caixa = this.closest (".caixa-tarefa");
-
         caixa.remove();
         listaTarefas.splice (index, 1);
+
         atualizarContador();
 
+        // Se a lista ficar vazia, mostra o de quando não tem nenhuma tarefa
         if (listaTarefas.length === 0) {
 
             const caixaPrincipal = document.getElementById ("caixa-principal");
@@ -155,7 +211,12 @@ function atualizarEventos() {
             document.getElementById ("contador").innerHTML = "";
         }
 
-        atualizarEventos();
+        atualizarTarefas();
+        atualizarStorage();
         };
     });
+}
+
+function atualizarStorage() {
+    localStorage.setItem ("tarefas", JSON.stringify (listaTarefas));
 }

@@ -110,7 +110,7 @@ header p {
     color: var(--gray-color-1);
 }
 
-/* Estado preenchido */
+/* Minhas tarefas no estado preenchido */
 .caixa-tarefa {
     background-color: var(--primary-color-super-light);
     border: 2px solid var(--primary-color);
@@ -177,7 +177,7 @@ input[type="checkbox"]:checked::after {
     color: var(--gray-color-2);
 }
 
-/* Estado vazio */
+/* Minhas tarefas no estado vazio */
 .lista-vazia {
     margin: 100px auto;
     display: flex;
