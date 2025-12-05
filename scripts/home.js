@@ -15,14 +15,17 @@ window.onload = function () {
     const saudacao = document.getElementById ("saudacao");
 
     if (hora >= 0 && hora < 12) {
+
         saudacao.innerHTML = "<p> Bom dia, <strong> Maria Fernanda! </strong> ☀️ </p>";
     }
     
     else if (hora < 18) {
+
         saudacao.innerHTML = "<p> Boa tarde, <strong> Maria Fernanda! </strong> 🌤️ </p>";
     }
     
     else {
+
         saudacao.innerHTML = "<p> Boa noite, <strong> Maria Fernanda! </strong> 🌙 </p>";
     }
 
@@ -56,7 +59,7 @@ formTarefa.addEventListener ("submit", function (add) {
     "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
     ];
 
-    // Data formada
+    // Data completa que foi formada
     const data = `${agora.getDate()} de ${meses[agora.getMonth()]} de ${agora.getFullYear()}`;
 
     // Objeto tarefa com seus principais dados
@@ -217,4 +220,3 @@ function atualizarTarefas() {
 function atualizarStorage() {
     localStorage.setItem ("tarefas", JSON.stringify (listaTarefas));
 }
-
